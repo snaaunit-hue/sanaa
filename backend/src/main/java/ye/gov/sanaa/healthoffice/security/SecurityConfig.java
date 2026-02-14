@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -35,23 +36,11 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        // Public endpoints
-                        .requestMatchers("/api/v1/auth/**").permitAll()
-                        .requestMatchers("/api/v1/public/**").permitAll()
-                        .requestMatchers("/api/v1/files/**").permitAll()
-                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
-                        .requestMatchers("/actuator/**").permitAll()
-                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        .requestMatchers("/", "/index.html", "/flutter_bootstrap.js",
-                                "/flutter_service_worker.js", "/manifest.json",
-                                "/favicon.png", "/icons/**", "/assets/**",
-                                "/main.dart.js", "/canvaskit/**", "/*.js", "/*.json").permitAll()
-                        // Admin-only endpoints
+                        // Protected API endpoints
                         .requestMatchers("/api/v1/admin/**").hasAnyAuthority("ACTOR_ADMIN")
-                        // Portal user endpoints
                         .requestMatchers("/api/v1/portal/**").hasAnyAuthority("ACTOR_FACILITY_USER")
-                        // All other endpoints require authentication
-                        .anyRequest().authenticated())
+                        // Everything else is public (API auth endpoints, public endpoints, static files, SPA routes)
+                        .anyRequest().permitAll())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }

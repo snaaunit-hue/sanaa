@@ -102399,7 +102399,7 @@ var $async$qQ=A.x(function(b,c){if(b===1)return A.z(c,r)
 while(true)switch(s){case 0:n=J
 m=t.j
 s=3
-return A.v(p.a.eL(0,"public/content/"+a),$async$qQ)
+return A.v(p.a.eL(0,"/public/content/"+a),$async$qQ)
 case 3:o=n.fi(m.a(c),new A.aoY(),t.Hy)
 o=A.a1(o,o.$ti.i("ap.E"))
 q=o

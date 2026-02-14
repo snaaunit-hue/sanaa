@@ -7,19 +7,19 @@ class PublicService {
   PublicService(this._api);
 
   Future<List<PublicContent>> getContent(String category) async {
-    final response = await _api.get('public/content/$category');
+    final response = await _api.get('/public/content/$category');
     return (response as List).map((e) => PublicContent.fromJson(e)).toList();
   }
 
   Future<void> submitComplaint(Map<String, dynamic> data) async {
-    await _api.post('public/complaints', body: data);
+    await _api.post('/public/complaints', body: data);
   }
 
   Future<Map<String, dynamic>> getAbout() async {
-    return await _api.get('public/about');
+    return await _api.get('/public/about');
   }
 
   Future<Map<String, dynamic>> getContact() async {
-    return await _api.get('public/contact');
+    return await _api.get('/public/contact');
   }
 }
