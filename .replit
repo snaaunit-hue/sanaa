@@ -1,4 +1,4 @@
-modules = ["java-graalvm22.3", "web"]
+modules = ["nodejs-20", "java-graalvm22.3"]
 [agent]
 expertMode = true
 
@@ -22,13 +22,13 @@ args = "Start application"
 name = "Start application"
 author = "agent"
 
+[workflows.workflow.metadata]
+outputType = "webview"
+
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "cd /home/runner/workspace && java -jar backend/target/health-office-backend-0.0.1-SNAPSHOT.jar"
 waitForPort = 5000
-
-[workflows.workflow.metadata]
-outputType = "webview"
 
 [[ports]]
 localPort = 5000
