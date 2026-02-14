@@ -42,6 +42,10 @@ public class SecurityConfig {
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
                         .requestMatchers("/actuator/**").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                        .requestMatchers("/", "/index.html", "/flutter_bootstrap.js",
+                                "/flutter_service_worker.js", "/manifest.json",
+                                "/favicon.png", "/icons/**", "/assets/**",
+                                "/main.dart.js", "/canvaskit/**", "/*.js", "/*.json").permitAll()
                         // Admin-only endpoints
                         .requestMatchers("/api/v1/admin/**").hasAnyAuthority("ACTOR_ADMIN")
                         // Portal user endpoints

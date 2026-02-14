@@ -168,7 +168,7 @@ public class InspectionService {
                                 .id(admin.getId())
                                 .username(admin.getUsername())
                                 .fullName(admin.getFullName())
-                                .role(admin.getRoles().isEmpty() ? "" : admin.getRoles().iterator().next().getCode())
+                                .roles(admin.getRoles().stream().map(r -> r.getCode()).collect(java.util.stream.Collectors.toSet()))
                                 .build();
         }
 

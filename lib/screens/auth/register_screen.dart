@@ -136,7 +136,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             border: Border.all(color: AppTheme.accentGold, width: 2),
                           ),
                           child: const Icon(Icons.person_add_outlined, color: Colors.white, size: 60),
-                        ).animate().scale(duration: 600.ms, curve: Curves.backOut),
+                        ).animate().scale(duration: 600.ms, curve: Curves.easeOutBack),
                         const SizedBox(height: 32),
                         const Text(
                           'مرحباً بك في بوابتنا الرقمية',
