@@ -98,9 +98,9 @@ public class DataInitializer {
                 facility = facilityRepository.save(facility);
 
                 ye.gov.sanaa.healthoffice.entity.FacilityUser user = new ye.gov.sanaa.healthoffice.entity.FacilityUser();
-                user.setFirstName("Ahmed");
-                user.setMiddleName("Mohamed");
-                user.setLastName("Alezzi");
+                user.setFirstName("أحمد");
+                user.setMiddleName("محمد");
+                user.setLastName("العزي");
                 user.setPhoneNumber("777777777");
                 user.setPasswordHash(passwordEncoder.encode("password"));
                 user.setUserType("OWNER");
@@ -108,7 +108,7 @@ public class DataInitializer {
                 user.setIsActive(true);
                 facilityUserRepository.save(user);
 
-                // Add more seed data
+                // إضافة بيانات تجريبية إضافية
                 ye.gov.sanaa.healthoffice.entity.Facility facility2 = new ye.gov.sanaa.healthoffice.entity.Facility();
                 facility2.setFacilityCode("FAC-002");
                 facility2.setNameAr("مجمع الثورة الطبي");
@@ -117,6 +117,15 @@ public class DataInitializer {
                 facility2.setLicenseType("RENEW");
                 facility2.setIsActive(true);
                 facilityRepository.save(facility2);
+
+                ye.gov.sanaa.healthoffice.entity.Facility facility3 = new ye.gov.sanaa.healthoffice.entity.Facility();
+                facility3.setFacilityCode("FAC-003");
+                facility3.setNameAr("صيدلية الشفاء");
+                facility3.setNameEn("Al-Shifa Pharmacy");
+                facility3.setFacilityType("PHARMACY");
+                facility3.setLicenseType("NEW");
+                facility3.setIsActive(true);
+                facilityRepository.save(facility3);
 
                 System.out.println("Default Seed Data created");
             }
