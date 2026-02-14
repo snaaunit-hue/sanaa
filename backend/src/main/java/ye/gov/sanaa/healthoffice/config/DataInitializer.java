@@ -108,7 +108,17 @@ public class DataInitializer {
                 user.setIsActive(true);
                 facilityUserRepository.save(user);
 
-                System.out.println("Default Facility User created: phone=777777777, password=password");
+                // Add more seed data
+                ye.gov.sanaa.healthoffice.entity.Facility facility2 = new ye.gov.sanaa.healthoffice.entity.Facility();
+                facility2.setFacilityCode("FAC-002");
+                facility2.setNameAr("مجمع الثورة الطبي");
+                facility2.setNameEn("Al-Thawra Medical Complex");
+                facility2.setFacilityType("CLINIC");
+                facility2.setLicenseType("RENEW");
+                facility2.setIsActive(true);
+                facilityRepository.save(facility2);
+
+                System.out.println("Default Seed Data created");
             }
 
             // Ensure Default Settings exist
